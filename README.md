@@ -1,4 +1,4 @@
-A simple meme generator project using ReactJS by ANISH SINHA
+A simple meme generator project with ReactJS using API to fetch memes image data.
 
 DEPLOY LINK : https://memes-gene.netlify.app
 
