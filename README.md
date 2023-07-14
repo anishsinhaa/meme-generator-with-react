@@ -1,4 +1,4 @@
-A simple meme generator project with ReactJS using API to fetch memes image data.
+A simple meme generator project with ReactJS using ImageFlip API to fetch memes images.
 
 DEPLOY LINK : https://memes-gene.netlify.app
 
