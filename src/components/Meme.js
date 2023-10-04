@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import image from "../images/meme.png";
+import html2canvas from "html2canvas";
 export default function Meme() {
+  const canvasRef = useRef(null)
+  useEffect(()=>{
+    const canvas = canvasRef.current
+    canvas.height= 500
+    canvas.width=500
+  },[])
+
+  const downloadImage=()=>{
+    html2canvas(canvasRef.current).then((canvas)=>{
+      var anchor = document.createElement('a');
+      anchor.href = canvas.toDataURL('myMeme/jpg');
+      anchor.download = 'myMeme.jpg';  
+      anchor.click();
+    })
+  }
   //useEffect -- API FETCH
   React.useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -93,11 +109,12 @@ export default function Meme() {
           <input type="file" onChange={uploadImage} className="upload-btn" />
         )}
       </div>
-      <div className="meme">
+      <div className="meme" ref={canvasRef}>
         <img src={meme.imgURL} className="meme-image" />
         <h2 className="meme--text top">{meme.topText}</h2>
         <h2 className="meme--text bottom">{meme.bottomText}</h2>
       </div>
+      <button className="btn" onClick={downloadImage}>Download</button>
     </div>
   );
 }
