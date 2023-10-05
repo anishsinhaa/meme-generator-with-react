@@ -72,6 +72,7 @@ body {
   max-height: 500px;
   padding: 20px;
   border-radius: 3px;
+  z-index: 998;
 }
 .meme--text {
   display: flex;
@@ -88,6 +89,7 @@ body {
   text-transform: uppercase;
   color: white;
   letter-spacing: 1px;
+  z-index: 999;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
     -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
     2px 2px 5px #000;

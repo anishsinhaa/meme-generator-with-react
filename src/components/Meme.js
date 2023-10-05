@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import image from "../images/meme.png";
 import html2canvas from "html2canvas";
 export default function Meme() {
+
   const canvasRef = useRef(null)
   useEffect(()=>{
     const canvas = canvasRef.current
@@ -10,7 +11,7 @@ export default function Meme() {
   },[])
 
   const downloadImage=()=>{
-    html2canvas(canvasRef.current).then((canvas)=>{
+    html2canvas(canvasRef.current,{ logging: true, letterRendering: 1,allowTaint: true,  useCORS: true }).then((canvas)=>{
       var anchor = document.createElement('a');
       anchor.href = canvas.toDataURL('myMeme/jpg');
       anchor.download = 'myMeme.jpg';  
@@ -109,7 +110,7 @@ export default function Meme() {
           <input type="file" onChange={uploadImage} className="upload-btn" />
         )}
       </div>
-      <div className="meme" ref={canvasRef}>
+      <div className="meme" id='meme' ref={canvasRef}>
         <img src={meme.imgURL} className="meme-image" />
         <h2 className="meme--text top">{meme.topText}</h2>
         <h2 className="meme--text bottom">{meme.bottomText}</h2>
